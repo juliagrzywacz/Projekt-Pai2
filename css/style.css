@@ -1,0 +1,189 @@
+/* Ogólne stylizacje dla ciała strony */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+/* Styl dla nagłówka */
+h1 {
+    text-align: center;
+    color: #A7C7E7; 
+}
+
+h2 {
+    text-align: center;
+    color: #A7C7E7; 
+}
+
+/* Kontener dla formularzy */
+.form-container {
+    max-width: 400px;
+    margin: 50px auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Formularz logowania i rejestracji */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    transition: border 0.3s;
+}
+
+input:focus {
+    border-color: #A7C7E7; 
+    outline: none;
+}
+
+button {
+    padding: 10px;
+    background-color: #A7C7E7; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #8faedb; 
+}
+
+p {
+    text-align: center;
+    font-size: 14px;
+}
+
+a {
+    color: #A7C7E7; /* Baby blue */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Stylizowanie kontenera dla całej strony */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Stylizacja menu */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #A7C7E7; 
+    color: white;
+    padding: 10px 20px;
+}
+
+h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.menu-toggle {
+    font-size: 24px;
+    cursor: pointer;
+    user-select: none;
+    display: none;
+}
+
+nav.menu {
+    display: flex;
+    gap: 15px;
+}
+
+nav.menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 5px 10px;
+    transition: background 0.3s;
+}
+
+nav.menu a:hover {
+    background-color: #8faedb; 
+    border-radius: 5px;
+}
+
+textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    background-color: #A7C7E7; 
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #8faedb; 
+}
+
+.post {
+    background: white;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.comment {
+    background-color: #fff; 
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    color: #333;
+}
+
+.comment strong {
+    font-size: 12px;
+    color: #00796b;
+}
+
+.comment span {
+    font-size: 14px;
+    font-style: italic;
+}
+
+.comment small {
+    display: block;
+    color: #888;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.comment a {
+    font-size: 12px;
+    color: #00796b;
+    text-decoration: none;
+}
+
+.comment a:hover {
+    text-decoration: underline;
+}
