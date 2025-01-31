@@ -34,6 +34,16 @@ function getDatabaseConnection() {
         FOREIGN KEY(post_id) REFERENCES posts(id),
         FOREIGN KEY(user_id) REFERENCES users(id)
     )");
+
+    // Tworzenie tabeli lików, jeśli jeszcze nie istnieje
+    $db->exec("CREATE TABLE IF NOT EXISTS likes (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        post_id INTEGER,
+        user_id INTEGER,
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY(post_id) REFERENCES posts(id),
+        FOREIGN KEY(user_id) REFERENCES users(id)
+    )");
     
     return $db;
 }

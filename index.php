@@ -42,12 +42,14 @@ if ($viewUser) {
 
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BLAB</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
     <div class="container">
         <header>
@@ -55,7 +57,7 @@ if ($viewUser) {
             <nav>
                 <?php if (isset($_SESSION['user'])): ?>
                     <a href="settings.php"><?= htmlspecialchars($_SESSION['user']['login']) ?></a>
-                    <a href="index.php">Wróć do postów</a>
+
                 <?php else: ?>
                     <a href="login.php">Logowanie</a>
                     <a href="register.php">Rejestracja</a>
@@ -76,6 +78,24 @@ if ($viewUser) {
                 <strong><?= htmlspecialchars($post['login']) ?>:</strong>
                 <p><?= htmlspecialchars($post['content']) ?></p>
                 <small><?= htmlspecialchars($post['created_at']) ?></small>
+                
+                <div class="likes">
+                    <form action="like.php" method="post">
+                        <input type="hidden" name="post_id" value="<?= $post['id'] ?>">
+                        <button type="submit" name="like" class="like-button">
+                            <img src="img/like.png" alt="Lubię to" class="like-icon">
+                        </button>
+                    </form>
+                    <span class="like-count">
+                        <?php
+                        $likes = $db->prepare("SELECT COUNT(*) FROM likes WHERE post_id = ?");
+                        $likes->execute([$post['id']]);
+                        $likeCount = $likes->fetchColumn();
+                        echo $likeCount;
+                        ?>
+                    </span>
+                </div>
+
 
                 <?php if (isset($_SESSION['user']) && $_SESSION['user']['id'] === $post['user_id']): ?>
                     <div class="options">
@@ -103,7 +123,7 @@ if ($viewUser) {
                             <small><?= htmlspecialchars($comment['created_at']) ?></small>
                         </div>
                     <?php endforeach; ?>
-                    
+
                     <a href="comments.php?post_id=<?= $post['id'] ?>">Pokaż wszystkie komentarze</a>
                 </div>
 
@@ -122,4 +142,5 @@ if ($viewUser) {
         <?php endif; ?>
     </div>
 </body>
+
 </html>

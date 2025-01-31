@@ -1,15 +1,20 @@
-/* Ogólne stylizacje dla ciała strony */
+/* Ogólne style */
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    align-items: center;
 }
 
 /* Nagłówki */
-h1, h2 {
+h1,
+h2 {
     text-align: center;
-    color: #4B86B4; /* Nieco ciemniejszy odcień baby blue dla lepszej czytelności */
+    color: #4B86B4;
 }
 
 /* Nagłówek strony */
@@ -17,16 +22,16 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #A7C7E7; /* Baby blue */
+    background-color: #A7C7E7;
     color: #4B86B4;
     padding: 15px 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
     position: sticky;
     top: 0;
     z-index: 1000;
-    max-width: 960px; /* Przywrócenie szerokości */
-    margin: 0 auto;
-    width: 100%;
 }
 
 /* Linki i przyciski w nagłówku */
@@ -63,9 +68,10 @@ a:hover {
 
 /* Kontener dla treści */
 .container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 20px;
+    width: 100%;
+    max-width: 960px;
+    margin: 20px auto;
+    flex: 1;
 }
 
 /* Formularze */
@@ -84,7 +90,8 @@ form {
     flex-direction: column;
 }
 
-input, textarea {
+input,
+textarea {
     padding: 10px;
     margin: 10px 0;
     border-radius: 5px;
@@ -93,10 +100,57 @@ input, textarea {
     transition: border 0.3s, box-shadow 0.3s;
 }
 
-input:focus, textarea:focus {
+input:focus,
+textarea:focus {
     border-color: #A7C7E7;
     outline: none;
     box-shadow: 0 0 5px rgba(167, 199, 231, 0.5);
+}
+
+/* Ustawienia */
+.settings-container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.settings-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.settings-container label {
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+}
+
+.settings-container input,
+.settings-container select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.settings-container button {
+    background-color: #A7C7E7;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    font-size: 14px;
+}
+
+.settings-container button:hover {
+    background-color: #8faedb;
 }
 
 /* Posty */
@@ -107,7 +161,43 @@ input:focus, textarea:focus {
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     position: relative;
-    max-width: 1000px; /* Przywrócenie szerokości */
+    display: flex;
+    flex-direction: column;
+    max-width: 960px;
+    width: 100%;
+}
+
+/* Like */
+.likes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    justify-content: flex-end;
+    margin-top: 10px;
+
+}
+
+.like-button {
+    background: transparent !important;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 2px 5px;
+    border-radius: 5px;
+}
+
+.like-icon {
+    background: transparent !important;
+    width: 30px;
+    height: 30px;
+    margin-right: 3px;
+}
+
+.like-count {
+    font-size: 14px;
+
 }
 
 /* Komentarze */
@@ -120,7 +210,7 @@ input:focus, textarea:focus {
     font-size: 14px;
     color: #333;
     position: relative;
-    max-width: 1500px; 
+    max-width: 1500px;
 }
 
 /* Styl dla opcji (trzy kropki) */
