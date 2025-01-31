@@ -53,7 +53,9 @@ if ($viewUser) {
 <body>
     <div class="container">
         <header>
-            <h1>BLAB</h1>
+            <h1>
+                <img src="img/cheers.png" alt="Logo Cheers" class="logo"> BLAB
+            </h1>
             <nav>
                 <?php if (isset($_SESSION['user'])): ?>
                     <a href="settings.php"><?= htmlspecialchars($_SESSION['user']['login']) ?></a>

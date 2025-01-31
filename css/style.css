@@ -11,10 +11,22 @@ body {
 }
 
 /* Nagłówki */
-h1,
+h1 {
+    text-align: center;
+    color: #4B86B4;
+    margin: 0;
+}
 h2 {
     text-align: center;
     color: #4B86B4;
+}
+
+.logo {
+    width: 85px; 
+    height: auto; 
+    vertical-align: middle;
+    margin-right: 10px;
+    margin-bottom: 15px;
 }
 
 /* Nagłówek strony */
@@ -69,7 +81,7 @@ a:hover {
 /* Kontener dla treści */
 .container {
     width: 100%;
-    max-width: 960px;
+    max-width: 1000px;
     margin: 20px auto;
     flex: 1;
 }
