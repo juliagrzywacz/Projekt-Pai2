@@ -55,7 +55,7 @@ if ($viewUser) {
         <header>
             <h1>
                 <img src="img/cheers.png" alt="Logo Cheers" class="logo"> BLAB
-            </h1>
+        </h1>
             <nav>
                 <?php if (isset($_SESSION['user'])): ?>
                     <a href="settings.php"><?= htmlspecialchars($_SESSION['user']['login']) ?></a>
@@ -123,6 +123,25 @@ if ($viewUser) {
                             <strong><?= htmlspecialchars($comment['login']) ?>:</strong>
                             <p><?= htmlspecialchars($comment['content']) ?></p>
                             <small><?= htmlspecialchars($comment['created_at']) ?></small>
+
+                            <?php if (isset($_SESSION['user']) && $_SESSION['user']['id'] === $comment['user_id']): ?>
+                                <div class="options">
+                                    <button class="options-btn">...</button>
+                                    <div class="options-menu">
+                                        <!-- Edytowanie komentarza -->
+                                        <form action="edit.php" method="get">
+                                            <input type="hidden" name="comment_id" value="<?= $comment['id'] ?>">
+                                            <button type="submit">Edytuj</button>
+                                        </form>
+                                        <!-- Usuwanie komentarza -->
+                                        <form action="delete.php" method="post">
+                                            <input type="hidden" name="delete_type" value="comment">
+                                            <input type="hidden" name="id" value="<?= $comment['id'] ?>">
+                                            <button type="submit" name="delete">Usuń</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
                         </div>
                     <?php endforeach; ?>
 
@@ -136,6 +155,7 @@ if ($viewUser) {
                         <button type="submit" name="submit_comment">Dodaj komentarz</button>
                     </form>
                 <?php endif; ?>
+
             </div>
         <?php endforeach; ?>
 
@@ -144,5 +164,4 @@ if ($viewUser) {
         <?php endif; ?>
     </div>
 </body>
-
 </html>
