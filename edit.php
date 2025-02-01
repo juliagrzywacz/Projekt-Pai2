@@ -67,13 +67,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['content'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edycja</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>Edycja <?= $editType === 'post' ? 'Postu' : 'Komentarza' ?></h1>
-    <form action="edit.php?<?= $editType === 'post' ? 'post_id' : 'comment_id' ?>=<?= $editType === 'post' ? $post['id'] : $comment['id'] ?>" method="post">
-        <textarea name="content" rows="4" cols="50" maxlength="280" required><?= htmlspecialchars($content) ?></textarea><br>
-        <button type="submit">Zapisz zmiany</button>
-    </form>
-    <a href="index.php">Powrót</a>
+    <div class="edit-container">
+        <h1>Edycja <?= $editType === 'post' ? 'Postu' : 'Komentarza' ?></h1>
+        <form action="edit.php?<?= $editType === 'post' ? 'post_id' : 'comment_id' ?>=<?= $editType === 'post' ? $post['id'] : $comment['id'] ?>" method="post">
+            <textarea name="content" rows="4" cols="50" maxlength="280" required><?= htmlspecialchars($content) ?></textarea><br>
+            <button type="submit">Zapisz zmiany</button>
+        </form>
+        <a href="index.php">Powrót</a>
+    </div>
 </body>
 </html>

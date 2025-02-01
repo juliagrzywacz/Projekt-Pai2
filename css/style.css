@@ -297,3 +297,79 @@ form button[type="submit"]:not([name="delete_post"]):not([name="delete_comment"]
 form button[type="submit"]:not([name="delete_post"]):not([name="delete_comment"]):hover {
     background-color: #8faedb;
 }
+
+/* Styl dla formularza edycji postu/komentarza */
+.edit-container {
+    max-width: 800px;
+    margin: 40px auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Styl dla tytułu edycji */
+.edit-container h1 {
+    text-align: center;
+    color: #4B86B4; /* Pasujący kolor nagłówka */
+    margin-bottom: 20px;
+}
+
+/* Styl dla formularza w oknie edycji */
+.edit-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Styl dla textarea */
+.edit-container textarea {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: vertical;
+    box-sizing: border-box;
+    min-height: 100px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Zmiana wyglądu textarea po focie */
+.edit-container textarea:focus {
+    border-color: #A7C7E7;
+    outline: none;
+    box-shadow: 0 0 5px rgba(167, 199, 231, 0.5);
+}
+
+/* Styl dla przycisku "Zapisz zmiany" */
+.edit-container button {
+    padding: 10px 15px;
+    font-size: 16px;
+    background-color: #A7C7E7; /* Kolor zgodny z resztą */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Zmiana koloru przycisku po najechaniu */
+.edit-container button:hover {
+    background-color: #8faedb;
+}
+
+/* Styl dla linku powrotu */
+.edit-container a {
+    text-decoration: none;
+    color: #4B86B4;
+    text-align: center;
+    font-size: 16px;
+    display: block;
+    margin-top: 20px;
+}
+
+/* Zmiana koloru linku po najechaniu */
+.edit-container a:hover {
+    text-decoration: underline;
+    color: #8faedb;
+}
