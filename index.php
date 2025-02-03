@@ -5,8 +5,26 @@ session_start();
 require 'baza.php';
 $db = getDatabaseConnection();
 
-// Pobieranie postów
-$posts = $db->query("SELECT posts.id, posts.content, posts.created_at, posts.user_id, users.login FROM posts JOIN users ON posts.user_id = users.id ORDER BY posts.created_at DESC LIMIT 10")->fetchAll(PDO::FETCH_ASSOC);
+
+// Liczba postów na stronę
+$postsPerPage = 10;
+$page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int)$_GET['page'] : 1;
+$offset = ($page - 1) * $postsPerPage;
+
+// Pobieranie liczby wszystkich postów
+$totalPosts = $db->query("SELECT COUNT(*) FROM posts")->fetchColumn();
+$totalPages = ceil($totalPosts / $postsPerPage);
+
+// Pobieranie postów z paginacją
+$stmt = $db->prepare("SELECT posts.id, posts.content, posts.created_at, posts.user_id, users.login 
+                      FROM posts JOIN users ON posts.user_id = users.id 
+                      ORDER BY posts.created_at DESC 
+                      LIMIT :limit OFFSET :offset");
+$stmt->bindValue(':limit', $postsPerPage, PDO::PARAM_INT);
+$stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+$stmt->execute();
+$posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 
 // Pobieranie komentarzy dla postów
 $comments = [];
@@ -158,6 +176,23 @@ if ($viewUser) {
 
             </div>
         <?php endforeach; ?>
+
+        <?php if ($totalPages > 1): ?>
+            <div class="pagination">
+                <?php if ($page > 1): ?>
+                    <a href="index.php?page=<?= $page - 1 ?>">« Poprzednia</a>
+                <?php endif; ?>
+
+                <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                    <a href="index.php?page=<?= $i ?>" class="<?= $i == $page ? 'active' : '' ?>"><?= $i ?></a>
+                <?php endfor; ?>
+
+                <?php if ($page < $totalPages): ?>
+                    <a href="index.php?page=<?= $page + 1 ?>">Następna »</a>
+                <?php endif; ?>
+            </div>
+        <?php endif; ?>
+
 
         <?php if (empty($posts)): ?>
             <p>Brak postów do wyświetlenia.</p>

@@ -373,3 +373,27 @@ form button[type="submit"]:not([name="delete_post"]):not([name="delete_comment"]
     text-decoration: underline;
     color: #8faedb;
 }
+
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pagination a {
+    padding: 8px 12px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    text-decoration: none;
+    color: #333;
+    border-radius: 5px;
+}
+
+.pagination a.active {
+    font-weight: bold;
+    background-color: #007bff;
+    color: white;
+}
+
+.pagination a:hover {
+    background-color: #ddd;
+}
