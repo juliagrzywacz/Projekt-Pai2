@@ -45,6 +45,15 @@ function getDatabaseConnection() {
         FOREIGN KEY(user_id) REFERENCES users(id)
     )");
     
+    // Tworzenie tabeli hasztagów, jeśli jeszcze nie istnieje
+    $db->exec("CREATE TABLE IF NOT EXISTS hashtags (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        post_id INT NOT NULL,
+        hashtag VARCHAR(50) NOT NULL,
+        FOREIGN KEY (post_id) REFERENCES posts(id) ON DELETE CASCADE
+    )");
+
     return $db;
 }
+
 ?>

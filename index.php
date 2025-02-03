@@ -83,6 +83,12 @@ if ($viewUser) {
                     <a href="register.php">Rejestracja</a>
                 <?php endif; ?>
             </nav>
+
+            <form action="search.php" method="get">
+                <input type="text" name="query" placeholder="Szukaj wpisów..." required>
+                <button type="submit">🔍 Szukaj</button>
+            </form>
+            
         </header>
 
         <?php if (isset($_SESSION['user'])): ?>

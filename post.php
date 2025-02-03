@@ -16,5 +16,14 @@ if (isset($_POST['add_post']) && isset($_SESSION['user'])) {
     $stmt->execute([$userId, $content]);
     header('Location: index.php');
     exit;
+
+    // Wyszukiwanie hasztagów
+    preg_match_all('/#\w+/', $content, $matches);
+    $hashtags = $matches[0];
+
+    foreach ($hashtags as $hashtag) {
+        $stmt = $db->prepare("INSERT INTO hashtags (post_id, hashtag) VALUES (?, ?)");
+        $stmt->execute([$postId, $hashtag]);
+    }
 }
 ?>
