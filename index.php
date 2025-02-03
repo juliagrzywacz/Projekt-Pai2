@@ -6,6 +6,11 @@ require 'baza.php';
 $db = getDatabaseConnection();
 
 
+// Funkcja do wyróżniania hasztagów
+function highlightHashtags($content) {
+    return preg_replace('/#(\w+)/', '<span class="hashtag">#$1</span>', $content);
+}
+
 // Liczba postów na stronę
 $postsPerPage = 10;
 $page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int)$_GET['page'] : 1;
@@ -88,7 +93,7 @@ if ($viewUser) {
                 <input type="text" name="query" placeholder="Szukaj wpisów..." required>
                 <button type="submit">🔍 Szukaj</button>
             </form>
-            
+
         </header>
 
         <?php if (isset($_SESSION['user'])): ?>
@@ -102,7 +107,7 @@ if ($viewUser) {
         <?php foreach ($posts as $post): ?>
             <div class="post">
                 <strong><?= htmlspecialchars($post['login']) ?>:</strong>
-                <p><?= htmlspecialchars($post['content']) ?></p>
+                <p><?= highlightHashtags(htmlspecialchars($post['content'])) ?></p>
                 <small><?= htmlspecialchars($post['created_at']) ?></small>
                 
                 <div class="likes">
